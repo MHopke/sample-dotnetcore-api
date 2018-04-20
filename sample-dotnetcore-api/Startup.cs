@@ -10,7 +10,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Microsoft.EntityFrameworkCore;
+
 using sampledotnetcoreapi.Models;
+
+using Amazon.DynamoDBv2;
 
 namespace sample_dotnetcore_api
 {
@@ -28,6 +31,7 @@ namespace sample_dotnetcore_api
         {
             services.AddDbContext<ToDoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
             services.AddMvc();
+            services.AddAWSService<IAmazonDynamoDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
